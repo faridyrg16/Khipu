@@ -1,0 +1,85 @@
+@startuml Universidad
+title La Universidad Nacional del Vallle
+!theme blueprint
+skinparam dpi 80
+skinparam linetype ortho
+skinparam ranksep 60
+skinparam nodesep 80
+left to right direction
+hide circle
+
+' --- Entidades ---
+entity "Facultad" as Facultad {
+  + **código_facultad** (PK)
+  --
+  nombre
+  decano
+  presupuesto_anual
+}
+
+entity "Programa" as Programa {
+  + **código_programa** (PK)
+  --
+  nombre
+  número_créditos
+  coordinador
+}
+
+entity "Profesor" as Profesor {
+  + **código_profesor** (PK)
+  --
+  nombre_completo
+  especialización
+  años_experiencia
+  salario
+}
+
+entity "Asignatura" as Asignatura {
+  + **código_asignatura** (PK)
+  --
+  nombre
+  número_créditos
+  horas_semanales
+}
+
+entity "Estudiante" as Estudiante {
+  + **código_estudiante** (PK)
+  --
+  nombre_completo
+  fecha_nacimiento
+  dirección
+  teléfono
+}
+
+entity "Imparte" as Imparte {
+  semestre
+}
+
+entity "Matrícula" as Matricula {
+  semestre
+  nota_obtenida
+}
+
+' --- Relaciones ---
+Facultad "1" -- "0..*" Programa : ofrece
+Programa "1" -- "1" Facultad : pertenece
+Profesor "0..*" -- "1..*" Facultad : trabaja_en
+Estudiante "0..*" -- "1..*" Programa : se_matricula_en
+Programa "1" -- "1..*" Asignatura : tiene
+Asignatura "1" -- "1" Programa : pertenece_a
+
+(Profesor, Asignatura) . Imparte
+Imparte -- Profesor
+Imparte -- Asignatura
+
+(Estudiante, Asignatura) . Matricula
+Matricula -- Estudiante
+Matricula -- Asignatura
+
+' Líneas ocultas para mejorar disposición
+Facultad -[hidden]-> Programa
+Programa -[hidden]-> Asignatura
+Profesor -[hidden]-> Facultad
+Estudiante -[hidden]-> Programa
+
+@enduml

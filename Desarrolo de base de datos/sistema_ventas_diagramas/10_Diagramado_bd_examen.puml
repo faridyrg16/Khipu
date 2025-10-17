@@ -41,7 +41,6 @@ entity "Asignatura" as Asignatura {
   número_créditos
   horas_semanales
   código_programa  [FK]
-  código_profesor  [FK]
   código_Imparte  [FK]
 }
 
@@ -88,3 +87,4 @@ Estudiante -[hidden]-> Programa
 
 
 @enduml
+

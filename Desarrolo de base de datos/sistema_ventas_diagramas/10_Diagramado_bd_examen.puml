@@ -14,15 +14,15 @@ entity "Facultad" as Facultad {
   --
   nombre
   decano
-  presupuesto_anual
 }
 
 entity "Programa" as Programa {
   + **código_programa** (PK)
   --
   nombre
-  número_créditos
+  numero_créditos
   coordinador
+  código_facultad  [FK]
 }
 
 entity "Profesor" as Profesor {
@@ -40,6 +40,9 @@ entity "Asignatura" as Asignatura {
   nombre
   número_créditos
   horas_semanales
+  código_programa  [FK]
+  código_profesor  [FK]
+  código_Imparte  [FK]
 }
 
 entity "Estudiante" as Estudiante {
@@ -52,6 +55,7 @@ entity "Estudiante" as Estudiante {
 }
 
 entity "Imparte" as Imparte {
+  + **código_Imparte** (PK)  
   semestre
 }
 
@@ -76,10 +80,11 @@ Imparte -- Asignatura
 Matricula -- Estudiante
 Matricula -- Asignatura
 
-' Líneas ocultas para mejorar disposición
+' Se oculto para mejorar el diseño del esquema
 Facultad -[hidden]-> Programa
 Programa -[hidden]-> Asignatura
 Profesor -[hidden]-> Facultad
 Estudiante -[hidden]-> Programa
+
 
 @enduml

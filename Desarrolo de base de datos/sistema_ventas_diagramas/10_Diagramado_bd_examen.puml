@@ -1,5 +1,5 @@
 @startuml Universidad
-title La Universidad Nacional del Vallle
+title La Universidad Nacional del Valle
 !theme blueprint
 skinparam dpi 80
 skinparam linetype ortho
@@ -8,12 +8,13 @@ skinparam nodesep 80
 left to right direction
 hide circle
 
-' --- Entidades ---
+' --- Entidades Principales ---
 entity "Facultad" as Facultad {
   + **código_facultad** (PK)
   --
   nombre
   decano
+  presupuesto_anual
 }
 
 entity "Programa" as Programa {
@@ -22,7 +23,16 @@ entity "Programa" as Programa {
   nombre
   numero_créditos
   coordinador
-  código_facultad  [FK]
+  código_facultad [FK]
+}
+
+entity "Asignatura" as Asignatura {
+  + **código_asignatura** (PK)
+  --
+  nombre
+  número_créditos
+  horas_semanales
+  código_programa [FK]
 }
 
 entity "Profesor" as Profesor {
@@ -34,16 +44,6 @@ entity "Profesor" as Profesor {
   salario
 }
 
-entity "Asignatura" as Asignatura {
-  + **código_asignatura** (PK)
-  --
-  nombre
-  número_créditos
-  horas_semanales
-  código_programa  [FK]
-  código_Imparte  [FK]
-}
-
 entity "Estudiante" as Estudiante {
   + **código_estudiante** (PK)
   --
@@ -53,38 +53,62 @@ entity "Estudiante" as Estudiante {
   teléfono
 }
 
+' --- Entidades Asociativas (Relaciones N:M) ---
+
+' N:M entre Profesor y Facultad
+entity "Adscripcion" as Adscripcion {
+  + **código_profesor** (FK)
+  + **código_facultad** (FK)
+  + **id_adscripcion**  (PK)
+}
+
+' N:M entre Estudiante y Programa
+entity "Inscripcion" as Inscripcion {
+  + **código_estudiante** (FK)
+  + **código_programa** (FK)
+  + **id_inscripcion**  (PK)
+}
+
+' N:M entre Profesor y Asignatura
 entity "Imparte" as Imparte {
-  + **código_Imparte** (PK)  
+  + **id_imparte** (PK)
+  --
+  + código_profesor (FK)
+  + código_asignatura (FK)
   semestre
 }
 
-entity "Matrícula" as Matricula {
+' N:M entre Estudiante y Asignatura
+entity "Matricula" as Matricula {
+  + **id_matricula** (PK)
+  --
+  + código_estudiante (FK)
+  + código_asignatura (FK)
   semestre
   nota_obtenida
 }
 
-' --- Relaciones ---
+
+' --- Relaciones 1:N ---
 Facultad "1" -- "0..*" Programa : ofrece
-Programa "1" -- "1" Facultad : pertenece
-Profesor "0..*" -- "1..*" Facultad : trabaja_en
-Estudiante "0..*" -- "1..*" Programa : se_matricula_en
-Programa "1" -- "1..*" Asignatura : tiene
-Asignatura "1" -- "1" Programa : pertenece_a
+Asignatura "0..*" -- "1" Programa : pertenece_a
 
-(Profesor, Asignatura) . Imparte
-Imparte -- Profesor
-Imparte -- Asignatura
+' --- Conexiones a Entidades Asociativas (N:M) ---
+Profesor "1..*" -- "0..*" Adscripcion : trabaja_en
+Facultad "1..*" -- "0..*" Adscripcion : tiene
 
-(Estudiante, Asignatura) . Matricula
-Matricula -- Estudiante
-Matricula -- Asignatura
+Estudiante "1..*" -- "0..*" Inscripcion : se_inscribe_en
+Programa "1..*" -- "0..*" Inscripcion : tiene
 
-' Se oculto para mejorar el diseño del esquema
+Profesor "1..*" -- "0..*" Imparte : imparte
+Asignatura "1..*" -- "0..*" Imparte : es_impartida_por
+
+Estudiante "1..*" -- "0..*" Matricula : cursa
+Asignatura "1..*" -- "0..*" Matricula : es_cursada_por
+' --- Relaciones Ocultas ---
 Facultad -[hidden]-> Programa
 Programa -[hidden]-> Asignatura
 Profesor -[hidden]-> Facultad
 Estudiante -[hidden]-> Programa
 
-
 @enduml
-

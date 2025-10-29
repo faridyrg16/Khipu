@@ -6,18 +6,18 @@
 5- escribir una funcion  que determine si una palabra es palindroma o sea si se lee igual de izquierda a derecha y de derecha a izquierda debe validar que no haya espacios en blanco y no distinga entre mayusculas y minusculas
 '''
 import random
-def mayor_de_dos(num1, num2):
-    if num1 > num2:
-        return num1
-    else:
-        return num2
-def suma_de_tres(num1, num2, num3):
-    return num1 + num2 + num3
+# se declara variables
+numero1 = int(input("Introduce el primer número: "))
+numero2 = int(input("Introduce el segundo número: "))
+# Creamos función para encontrar el mayor
+def encontrar_mayor(num1, num2):
+  if num1 > num2:
+    return num1
+  else:
+    return num2
+mayor = encontrar_mayor(numero1, numero2)
+print(f"El número mayor es: {mayor}")
+
 def mensaje_aleatorio():
     mensajes = ["Hola", "Bienvenido", "Adiós", "Gracias"]
     return random.choice(mensajes)
-def es_par(num):
-    return num % 2 == 0
-def es_palindromo(palabra):
-    palabra = palabra.replace(" ", "").lower()
-    return palabra == palabra[::-1]

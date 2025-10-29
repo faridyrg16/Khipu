@@ -7,11 +7,11 @@
 '''
 # librerias
 import random
-# se declara variables
+
 numero1 = int(input("Introduce el primer número: "))
 numero2 = int(input("Introduce el segundo número: "))
 numero3 = int(input("Introduce el tercer número: "))
-# Creamos función para encontrar el mayor
+
 def encontrar_mayor(num1, num2):
   if num1 > num2:
     return num1
@@ -44,7 +44,6 @@ print(es_par(numero3))
 def es_palindromo(palabra):
     if palabra := palabra.replace(" ", "").lower():
         return palabra == palabra[::-1]
-        f"El número {palabra} es palíndromo"
     return f"El texto '{palabra}' no es palíndromo."
 palabra = input("Introduce una palabra o frase: ")
 if es_palindromo(palabra):

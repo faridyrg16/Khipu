@@ -19,5 +19,7 @@ mayor = encontrar_mayor(numero1, numero2)
 print(f"El número mayor es: {mayor}")
 
 def mensaje_aleatorio():
-    mensajes = ["Hola", "Bienvenido", "Adiós", "Gracias"]
+    mensajes = ["Hola", "Bienvenido", "Adiós", "Gracias", "Buen día", "¿Cómo estás?", "Éxitos", "Felicidades", "Nos vemos", "Hasta pronto"]
     return random.choice(mensajes)
+
+print(mensaje_aleatorio())

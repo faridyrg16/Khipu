@@ -57,21 +57,22 @@ entity "Estudiante" as Estudiante {
 
 ' N:M entre Profesor y Facultad
 entity "Adscripcion" as Adscripcion {
-  + **código_profesor** (FK)
-  + **código_facultad** (FK)
-  + **id_adscripcion**  (PK)
+  + **id_adscripcion (PK)**
+  --
+  + código_profesor (FK)
+  + código_facultad (FK)
 }
 
 ' N:M entre Estudiante y Programa
-entity "Inscripcion" as Inscripcion {
-  + **código_estudiante** (FK)
-  + **código_programa** (FK)
-  + **id_inscripcion**  (PK)
+entity "Adscripcion" as Adscripcion {
+  + **id_adscripcion (PK)**
+  --
+  + código_profesor (FK)
+  + código_facultad (FK)
 }
-
 ' N:M entre Profesor y Asignatura
 entity "Imparte" as Imparte {
-  + **id_imparte** (PK)
+  + **id_imparte (PK)**
   --
   + código_profesor (FK)
   + código_asignatura (FK)
@@ -80,7 +81,7 @@ entity "Imparte" as Imparte {
 
 ' N:M entre Estudiante y Asignatura
 entity "Matricula" as Matricula {
-  + **id_matricula** (PK)
+  + **id_matricula (PK)**
   --
   + código_estudiante (FK)
   + código_asignatura (FK)

@@ -1,11 +1,11 @@
-@startuml
-' Configuración de estilo
+@startuml Parcial 2 DB
+!theme blueprint
 skinparam linetype ortho
-skinparam monochrome true
 skinparam shadowing false
 skinparam classAttributeIconSize 0
+hide circles
+hide methods
 
-' --- ENTIDADES PRINCIPALES ---
 
 entity "Editorial" as Editorial {
   + **id_editorial** (PK) : INT
@@ -42,7 +42,7 @@ entity "Prestamo" as Prestamo {
   fecha_devolucion : DATE
 }
 
-' --- ENTIDAD ASOCIATIVA (Relación N:M) ---
+
 
 entity "DetallePrestamo" as DetallePrestamo {
   + **# id_prestamo** (PFK) : INT
@@ -50,7 +50,6 @@ entity "DetallePrestamo" as DetallePrestamo {
   --
 }
 
-' --- RELACIONES ---
 
 ' 1 Editorial tiene 0..* Libros
 Editorial "1" ||--o{ "0..*" Libro : "publica"
@@ -63,7 +62,7 @@ Usuario "1" ||--o{ "0..*" Prestamo : "realiza"
 Prestamo "1" }o--o{ "0..*" Libro : "contiene"
 (Prestamo, Libro) . DetallePrestamo
 
-' Nota: La entidad "Autor" está definida en los scripts, 
+' La entidad "Autor" está definida en los scripts, 
 ' pero la relación N:M con Libro (mencionada en la sección 2)
 ' no fue implementada en las tablas de la sección 3.
 Autor .. "Autor" : (Relación N:M con Libro no implementada en scripts)

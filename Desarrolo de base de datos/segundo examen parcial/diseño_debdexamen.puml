@@ -42,7 +42,7 @@ entity "Prestamo" as Prestamo {
   fecha_devolucion : DATE
 }
 
-
+' aqui ta mal algo corregir
 
 entity "DetallePrestamo" as DetallePrestamo {
   + **# id_prestamo** (PFK) : INT

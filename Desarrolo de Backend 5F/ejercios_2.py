@@ -1,6 +1,13 @@
-nota1 = float(input("Ingresa la primera nota: "))
-nota2 = float(input("Ingresa la segunda nota: "))
-nota3 = float(input("Ingresa la tercera nota: "))
+def leer_numero(prompt):
+    while True:
+        s = input(prompt).strip().replace(',', '.')
+        try:
+            return float(s)
+        except ValueError:
+            print("Entrada inválida. Por favor, ingresa solo números.")
+nota1 = leer_numero("Ingresa la primera nota: ")
+nota2 = leer_numero("Ingresa la segunda nota: ")
+nota3 = leer_numero("Ingresa la tercera nota: ")
 
 promedio = (nota1 + nota2 + nota3) / 3
 

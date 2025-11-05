@@ -8,7 +8,7 @@ def leer_numero(prompt):
             else:
                 print("La nota debe estar en el rango de 0 a 10.")
         except ValueError:
-            print("Entrada inválida. Por favor, ingresa solo números.")
+            print("Entrada inválida. Por favor, ingresa solo números")
 
 nota1 = leer_numero("Ingresa la primera nota: ")
 nota2 = leer_numero("Ingresa la segunda nota: ")

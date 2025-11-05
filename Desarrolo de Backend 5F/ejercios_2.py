@@ -2,9 +2,14 @@ def leer_numero(prompt):
     while True:
         s = input(prompt).strip().replace(',', '.')
         try:
-            return float(s)
+            numero = float(s)
+            if 0 <= numero <= 10:
+                return numero
+            else:
+                print("La nota debe estar en el rango de 0 a 10.")
         except ValueError:
             print("Entrada inválida. Por favor, ingresa solo números.")
+
 nota1 = leer_numero("Ingresa la primera nota: ")
 nota2 = leer_numero("Ingresa la segunda nota: ")
 nota3 = leer_numero("Ingresa la tercera nota: ")

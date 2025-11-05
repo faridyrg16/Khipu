@@ -22,3 +22,4 @@ elif promedio >= 5 and promedio <= 6.9:
     print(f"Tu promedio es {promedio:.2f}. Necesitas recuperación.")
 else: 
     print(f"Tu promedio es {promedio:.2f}. Reprobaste.")
+    print("Debes mejorar tus notas.")

@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "Desarrolo de Backend 5F"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

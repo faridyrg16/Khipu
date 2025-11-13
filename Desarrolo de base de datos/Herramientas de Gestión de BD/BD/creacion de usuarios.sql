@@ -36,3 +36,7 @@ GRANT EVENT ON hotel_reservas.* TO 'backup_user'@'localhost';
 
 -- Aplicar los cambios
 FLUSH PRIVILEGES;
+
+-- 2.3 Verificar Privilegios
+SHOW GRANTS FOR 'app_hotel'@'localhost';
+SELECT user, host FROM mysql.user WHERE user LIKE '%hotel%';

@@ -29,6 +29,6 @@ while True:
         print("Por favor, ingrese un precio válido (mayor a 0)")
 
 print("\n=== RESUMEN DEL PEDIDO ===")
-print(f"Total del pedido: ${total:.2f}")
+print(f"Total del pedido: S/.{total:.2f}")
 print(f"Número de productos: {cantidad_productos}")
-print(f"Producto más caro: ${precio_maximo:.2f}")
+print(f"Producto más caro: S/.{precio_maximo:.2f}")

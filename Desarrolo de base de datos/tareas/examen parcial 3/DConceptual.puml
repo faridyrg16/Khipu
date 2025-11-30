@@ -46,10 +46,6 @@ entity "MULTAS" as multas {
   estado : string
 }
 
-' Relaciones
-' ||--|{  : Uno a Muchos (Obligatorio)
-' ||--o{  : Uno a Muchos (Opcional)
-' ||--o|  : Uno a Uno (Opcional)
 
 autores ||--|{ libros : escriben
 categorias ||--|{ libros : clasifican

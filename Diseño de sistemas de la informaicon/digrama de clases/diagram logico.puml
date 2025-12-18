@@ -5,7 +5,7 @@ skinparam classFontSize 12
 skinparam classFontName "Arial"
 skinparam classAttributeIconSize 0
 skinparam linetype ortho
-scale 5
+scale 10
 hide circle
 
 abstract class Usuario {
@@ -40,7 +40,6 @@ class Incidencia {
 class Categoria {
     id_categoria 
     nombre {Infraestructura, RRHH, Insumos}
-    sla_horas 
 }
 
 class Evidencia {
@@ -53,7 +52,7 @@ class Evidencia {
 class Mesa {
     id_mesa 
     numero 
-    zona {Terraza, Salon, Barra}
+    zona {Primer piso, Salon, Barra, Cocina}
 }
 
 class Turno {

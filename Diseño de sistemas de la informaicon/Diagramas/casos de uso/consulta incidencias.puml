@@ -1,6 +1,14 @@
 @startuml   Consultar Incidencias
 left to right direction
 skinparam packageStyle rectangle
+skinparam nodesep 100 
+skinparam ranksep 100
+skinparam classFontSize 12
+skinparam classFontName "Arial"
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+scale 5
+hide circle
 
 ' Actores (mantenemos la herencia previa)
 actor "Usuario" as User
@@ -27,12 +35,12 @@ package "Módulo de Incidencias" {
 
     ' Relaciones de Extensión (Funcionalidad opcional/enriquecida)
     ' Al consultar, puedo querer filtrar o ver el detalle, pero no es obligatorio hacerlo siempre.
-    UC_Consultar_Propia <.. UC_Filtrar : <<extend>>
-    UC_Consultar_Propia <.. UC_Detalle : <<extend>>
+    UC_Consultar_Propia <.. UC_Filtrar : <<Extiende>>
+    UC_Consultar_Propia <.. UC_Detalle : <<Extiende>>
     
     ' El supervisor tiene un caso de uso extra: Exportar
-    UC_Consultar_Area <.. UC_Exportar : <<extend>>
-    UC_Consultar_Area <.. UC_Detalle : <<extend>>
+    UC_Consultar_Area <.. UC_Exportar : <<Extiende>>
+    UC_Consultar_Area <.. UC_Detalle : <<Extiende>>
 }
 
 @enduml

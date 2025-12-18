@@ -2,6 +2,14 @@
 ' Configuración visual
 left to right direction
 skinparam packageStyle rectangle
+skinparam nodesep 100 
+skinparam ranksep 100
+skinparam classFontSize 12
+skinparam classFontName "Arial"
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+scale 5
+hide circle
 
 ' 1. Definición de Actores
 ' Actor Padre (Abstracto: no existe físicamente, pero agrupa características)
@@ -30,10 +38,10 @@ package "Sistema Kung Food Panda" {
 
     ' Relaciones avanzadas
     ' Extend: Recuperar contraseña es opcional, solo si la olvida.
-    Login <.. Recover : <<extend>>
+    Login <.. Recover : <<Extiende>>
     
     ' Include: Para iniciar sesión, OBLIGATORIAMENTE el sistema valida credenciales (invisible al usuario, pero parte del proceso)
-    Login ..> Validate : <<include>>
+    Login ..> Validate : <<Incluye>>
 }
 
 @enduml
